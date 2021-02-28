@@ -25,7 +25,25 @@ const json = {
     },
     levelZeroObjectTwo: {
         levelZeroObjectTwoTitle: "This is the title for the 2nd object on level 0",
-        levelZeroObjectTwoListItems: ["1_item_0", "1_item_1", "1_item_2"]
+        levelZeroObjectTwoListItems: ["1_item_0", "1_item_1", "1_item_2"],
+        levelZeroObjectTwoObjectList: [
+            {
+                title: "levelZeroObjectTwoObjectList first object title"
+            },
+            {
+                title: "levelZeroObjectTwoObjectList second object title",
+                body: "levelZeroObjectTwoObjectList second object body",
+                levelZeroObjectTwoObjectListSubObjectList: [
+                    {
+                        title: "levelZeroObjectTwoObjectListSubObjectList first element title"
+                    },
+                    {
+                        title: "levelZeroObjectTwoObjectListSubObjectList second element title",
+                        items: ["item1", "item2", "item3", "item4"]
+                    },
+                ]
+            },
+        ]
     }
 }
 
@@ -100,7 +118,6 @@ class KeyValuePair {
 
         let parent = this.parent;
         while(parent){
-            console.log("CALCULATING PARENTS....", parent)
             parents.push(parent.name);
             parent = parent.parent;
         }

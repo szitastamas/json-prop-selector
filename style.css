@@ -46,6 +46,10 @@
     margin-left: 36px;
 }
 
+[data-depth="7"]{
+    margin-left: 42px;
+}
+
 .json-row-value:hover{
     background: rgba(144, 238, 144, 0.507);
 }
