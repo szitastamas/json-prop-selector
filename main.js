@@ -64,37 +64,29 @@ const create = (parent, key, value, index) => {
     // - Parent objects are pushed into the array and will be tracked by their children
   } else if (Array.isArray(value)) {
     depth++;
-    const arrayContainer = new JsonArrayContainer(parent, key, depth);
-    list.push(arrayContainer);
+    const container = new NestedContainer(parent, key, depth);
+    list.push(container);
     // Array items are primitive types and therefore this function will be called again and we land in the simple key-value-pair handler block
     if (value.every((item) => typeof item !== 'object' || !Array.isArray(item))) {
-      value.forEach((val, index) => create(arrayContainer, index, val, index));
+      value.forEach((val, index) => create(container, index, val, index));
     } else {
       // Array items are non-primitive types
       // We have to break them down and they will land in the else-if block below
       value.forEach((val, index) => {
-        Object.entries(val).forEach((v) => create(arrayContainer, arrayContainer.name, v, index));
+        Object.entries(val).forEach((v) => create(container, container.name, v, index));
       });
     }
 
     // If the value is a simple object we can create another container and this function will be called recursively for each of its blocks
   } else if (typeof value === 'object') {
     depth++;
-    const objectContainer = new JsonObjectContainer(parent, key, depth);
-    list.push(objectContainer);
-    Object.entries(value).forEach(([key, val], index) => create(objectContainer, key, val));
+    const container = new NestedContainer(parent, key, depth);
+    list.push(container);
+    Object.entries(value).forEach(([key, val], index) => create(container, key, val));
   }
 };
 
-class JsonObjectContainer {
-  constructor(parent, name, depth) {
-    this.parent = parent;
-    this.name = name;
-    this.depth = depth;
-  }
-}
-
-class JsonArrayContainer {
+class NestedContainer {
   constructor(parent, name, depth) {
     this.parent = parent;
     this.name = name;
