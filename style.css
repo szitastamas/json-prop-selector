@@ -1,0 +1,51 @@
+#json-container{
+    padding: 2rem;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+}
+
+#original-json-displayer{
+    white-space: pre-wrap;
+}
+
+.json-row-key {
+    font-weight: 600;
+    margin-right: 10px;
+}
+
+.json-row-value{
+    cursor: pointer;
+    transition: 50ms background ease-out;
+}
+
+[data-depth="0"]{
+    margin-left: 0px;
+}
+
+[data-depth="1"]{
+    margin-left: 6px;
+}
+
+[data-depth="2"]{
+    margin-left: 12px;
+}
+
+[data-depth="3"]{
+    margin-left: 18px;
+}
+
+[data-depth="4"]{
+    margin-left: 24px;
+}
+
+[data-depth="5"]{
+    margin-left: 30px;
+}
+
+[data-depth="6"]{
+    margin-left: 36px;
+}
+
+.json-row-value:hover{
+    background: rgba(144, 238, 144, 0.507);
+}
