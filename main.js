@@ -147,6 +147,7 @@ const createJsonRow = (prop) => {
     keyElement.className = 'json-row-key';
     keyElement.innerHTML = key;
     keyElement.dataset.parent = parent;
+    if(!isNaN(parseInt(key, 10))) keyElement.dataset.hidden = true;
     return keyElement;
   };
 
@@ -160,7 +161,7 @@ const createJsonRow = (prop) => {
 
   row.appendChild(createKey(prop.name, prop.depth));
 
-  if (prop?.value) {
+  if (prop.value) {
     row.appendChild(createValue(prop.value));
   }
 

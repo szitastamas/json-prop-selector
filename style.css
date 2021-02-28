@@ -18,6 +18,10 @@
     transition: 50ms background ease-out;
 }
 
+[data-hidden="true"]{
+    display: none;
+}
+
 [data-depth="0"]{
     margin-left: 0px;
 }
