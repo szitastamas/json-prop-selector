@@ -92,13 +92,6 @@ class JsonArrayContainer {
     }
 }
 
-class JsonValue {
-    constructor(value){
-        this.id = Math.floor(Math.random() * 100000);
-        this.value = value;
-    }
-}
-
 class KeyValuePair {
     constructor(parent, name, value, depth, index){
         this.parent = parent;
@@ -123,14 +116,6 @@ class KeyValuePair {
         }
 
         return parents.reverse();
-    }
-}
-
-class ArrayItem {
-    constructor(propName, value, index){
-        this.propName = propName;
-        this.value = value;
-        this.index = index;
     }
 }
 
