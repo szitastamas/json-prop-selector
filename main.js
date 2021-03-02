@@ -39,13 +39,21 @@ const json = {
           },
           {
             title: 'levelZeroObjectTwoObjectListSubObjectList second element title',
-            items: ['item1', 'item2', 'item3', 'item4'],
+            items: [
+              {
+                0: 'hallo',
+                100: 'Andreas',
+                20: 'Blabla',
+                10: 'Okay',
+              },
+            ],
           },
         ],
       },
     ],
   },
 };
+
 
 document.getElementById('original-json-displayer').innerHTML = JSON.stringify(json, undefined, 2);
 const transformedJsonDisplayer = document.getElementById('transformed-json-displayer');
@@ -139,7 +147,7 @@ const createJsonRow = (prop) => {
     keyElement.className = 'json-row-key';
     keyElement.innerHTML = key;
     keyElement.dataset.parent = parent;
-    if(!isNaN(parseInt(key, 10))) keyElement.dataset.hidden = true;
+    if (!isNaN(parseInt(key, 10))) keyElement.dataset.hidden = true;
     return keyElement;
   };
 
